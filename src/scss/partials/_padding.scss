@@ -1,0 +1,37 @@
+body {
+    @include media-up($small-screen) {
+        padding-top: $navbar-height;
+    }
+}
+
+main > div:last-child {
+    padding-bottom: $s-xxl;
+}
+
+.site-footer {
+    padding: $s-xxl 0;
+}
+
+.post-main {
+    article {
+        padding-bottom: $s-xxl;
+    }
+}
+
+.archive-container,
+.page-container {
+    padding-bottom: $s-xxl;
+}
+
+
+
+.search-container {
+    padding-bottom: $s-xxl;
+    padding-top: $s-xxl;
+}
+
+.page-main {
+    .article-content-container {
+        padding-top: 1.5rem;
+    }
+}

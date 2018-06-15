@@ -1,0 +1,65 @@
+//  To accomodate the fixed navbar when jumping to sections
+.comments-container, .comment-form-container {
+    padding-top: $navbar-height;
+    margin-top: $navbar-height * -1;
+}
+
+//  To remove the excessive padding when the section gets :target-ed
+.comments-container-target,
+.comment-form-container-target {
+    margin-top: 0;
+
+    &:after {
+        clear: both;
+        content: "";
+        display: block;
+    }
+}
+
+//  Highlight section on :target
+//  https://aarontgrogg.com/blog/2012/05/18/pure-css-highlight-for-link-target/
+:target .comments-container-target,
+:target .comment-form-container-target {
+    animation: highlight 5s;
+}
+
+@keyframes highlight {
+    0% { background-color: transparent; }
+    10% { background-color: $theme-primary; }
+    100% { background-color: transparent; }
+}
+
+//  Move padding to the inner (*-container-target) div
+//  so highlight fills all the way to footer
+main > div.comment-form-container {
+    padding-bottom: 0;
+}
+
+.comment-form-container-target {
+    padding-bottom: $s-xxl;
+}
+
+.comments,
+.comment-form {
+    margin-top: $s-xxl;
+}
+
+.comments-list {
+    .comment-header {
+        h4 {
+            margin: 0;
+        }
+
+        .comment-in-reply-to {
+            margin: 0;
+        }
+    }
+
+    .comment-content {
+        margin-top: $s-m;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}

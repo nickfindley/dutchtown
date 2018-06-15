@@ -1,0 +1,138 @@
+.sidebar {
+    section {
+        margin-top: $s-xxl;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        dd {
+            margin: 0 0 $s-l;
+        }
+    }
+}
+
+.news-main,
+.post-main {
+    .article-posted ul {
+        margin-bottom: $s-xl;
+    }
+}
+
+.news-container {
+    margin-top: $s-xxl;
+}
+
+.news-main,
+.archive-main {
+    article {
+        margin-top: $s-xxl;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .article-header-img {
+            margin-bottom: 0;
+        }
+
+        .article-posted ul {
+            @include media-up($tiny-screen){
+                margin-bottom: $s-l;
+
+                li {
+                    margin-left: $s-m;
+
+                    @include media-up($small-screen) {
+                        margin-left: $s-xl;
+                    }
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            @include media-up($large-screen) {
+                li {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+.post-main {
+    article {
+        .article-posted ul {
+            @include media-up($small-screen) {
+                margin-bottom: $s-xl;
+            }
+
+            &.fa-ul {
+                margin-left: 1.5rem !important;
+            }
+
+            li {
+                margin-right: $s-xxl;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .article-has-no-img {
+        .article-header {
+            margin-top: $s-xxl;
+        }
+    }
+}
+
+.search-main {
+    article {
+        //  Search results need less whitespace than regular articles
+        margin-top: $s-l;
+
+        &:first-child {
+            margin-top: 0;
+        }   
+
+        .article-header {
+            h2 {
+                margin-bottom: 0;
+            }
+        }
+
+        .article-posted ul {
+            margin-bottom: $s-l;
+
+            li {
+                margin-left: $s-l;
+                        
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+.page-main {
+    .article-has-no-img {
+        .article-header {
+            margin-top: $s-xxl;
+        }
+    }
+}
+
+//  Margins for type
+h1 {
+    margin: inherit
+}
+
+.page-title h1 {
+    margin-bottom: 1rem;
+    margin-top: .5rem;
+}
