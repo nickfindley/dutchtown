@@ -3,7 +3,6 @@
 ### To Do
 
 * Sitewide
-  * Breadcrumb navigation
   * Output all styles into style.css
   * JavaScript
     * Combine and minify JS files
@@ -30,16 +29,12 @@
   * Refine excerpts
   * Add "read more" links
 * 404 page
-  * Include search form
   * Approximate results from URL
 * Sidebars and page footers
 * Clean up navbar
   * Scale down and change color on dropdowns
 * Calendar
   * Default to list view on small screens
-* Custom post types
-  * Photos
-  * Places
 
 ### Template Tags
 
