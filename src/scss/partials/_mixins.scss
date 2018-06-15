@@ -1,0 +1,48 @@
+//	_mixins.scss
+
+//	Specified size or larger
+//	Default is < 576px
+
+$sc-576:		576px;		// landscape phones
+$sc-768:		768px;		// tablets
+$sc-992: 		992px;		// desktops
+$sc-1100:       1100px;     // larger screens
+$sc-2000:		2000px;		// huge screens
+
+@mixin media-up($screen-size) {
+	@media (min-width: $screen-size) {
+		@content;
+	}
+}
+
+//	Up to (but not including) specified screen size
+@mixin media-down($screen-size) {
+	@media (max-width: $screen-size - 1) {
+		@content;
+	}
+}
+
+//	Generate a border and some padding
+//	i.e. @include border-top(thin, 2rem) to set thin top border with 2rem padding
+//	or   @include border-top(heavy) to set heavy top border with default padding
+//	or   @include border-top for default border and padding
+@mixin border-top($style: regular, $padding: $border-padding) {
+	border-top: map-get($border-map, $style);
+	padding-top: $padding;
+}
+@mixin border-right($style: regular, $padding: $border-padding) {
+	border-right: map-get($border-map, $style);
+	padding-top: $padding;
+}
+@mixin border-bottom($style: regular, $padding: $border-padding) {
+	border-bottom: map-get($border-map, $style);
+	padding-top: $padding;
+}
+@mixin border-left($style: regular, $padding: $border-padding) {
+	border-left: map-get($border-map, $style);
+	padding-top: $padding;
+}
+@mixin border($style: regular, $padding: $border-padding) {
+	border: map-get($border-map, $style);
+	padding-top: $padding;
+}

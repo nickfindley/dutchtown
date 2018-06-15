@@ -1,0 +1,200 @@
+//  Fix for month datepicker on calendar
+.table-condensed {
+    table-layout: unset;
+}
+
+//  Fix for background day number on current date
+#tribe-events .tribe-events-button, #tribe-events .tribe-events-button:hover, #tribe_events_filters_wrapper input[type=submit], .tribe-events-button, .tribe-events-button.tribe-active:hover, .tribe-events-button.tribe-inactive, .tribe-events-button:hover, .tribe-events-calendar td.tribe-events-present div[id*=tribe-events-daynum-], .tribe-events-calendar td.tribe-events-present div[id*=tribe-events-daynum-]>a {
+    background-color: $theme-primary;
+    color: $theme-black;
+}
+
+.tribe-events-viewmore a {
+    color: $link-color;
+}
+
+#tribe-events-content .tribe-events-tooltip h4 {
+    color: $text-color;
+}
+
+#tribe-events-footer .tribe-events-sub-nav {
+    padding: .5rem;
+}
+
+.tribe-events-list-separator-month {
+    font-size: 1.75rem;
+
+    @include media-up($small-screen) {
+        font-size: 2.5rem;
+    }
+
+    @include bold;
+    margin: 1rem 0;
+    padding: 0;
+    text-align: left;
+    z-index: 0;
+
+    span {
+        background-color: transparent;
+        padding: 0;
+    }
+}
+
+.tribe-events-list-separator-month:after {
+    content: "";
+    border-bottom: 0;
+    height: 0;
+    width: 0;
+    display: none;
+    position: absolute;
+    z-index: -1
+}
+
+.tribe-events-list-separator-month+.type-tribe_events.tribe-events-first {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h2.tribe-events-page-title
+.tribe-events-list h2.tribe-events-page-title {
+    @include border-top(heavy)
+    font-size: 2.5rem;
+    
+    @include media-up($small-screen) {
+        font-size: 4rem;
+    }
+
+    margin: 0;
+    text-align: left;
+}
+
+.tribe-events-list {
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+a.tribe-events-gcal, a.tribe-events-ical {
+    margin: 0;
+}
+
+.tribe-events-day .tribe-events-day-time-slot .type-tribe_events {
+    margin-left: 0;
+}
+
+#tribe-events-content .tribe-events-calendar div[id*=tribe-events-event-] h3.tribe-events-month-event-title {
+    @include regular;
+}
+
+#tribe-events .tribe-events-button.tribe-events-gcal,
+#tribe-events .tribe-events-button.tribe-events.ical {
+    margin-right: 1rem;
+}
+
+.post-main article .article-posted ul.fa-ul.tribe-event-details {
+    font-size: 1.25rem;
+    justify-content: flex-start;
+
+    li {
+        margin-right: 3.5rem;
+    }
+}
+
+.tribe-events-single-section-title {
+    @include border-top(regular);
+}
+
+.single-tribe_events .tribe-events-event-meta {
+    background-color: transparent;
+    border: 0;
+}
+
+.tribe-events-details dt, .tribe-events-organizer dt, .tribe-events-venue dt {
+    clear: both;
+    float: left;
+    min-width: 8rem;
+}
+
+.tribe-events-details dd, .tribe-events-organizer dd, .tribe-events-venue dd {
+    float: left;
+}
+
+.tribe-events-organizer {
+    @include clearfix;
+}
+
+.single-tribe_events .tribe-events-venue-map {
+    background-color: transparent;
+    border: 0;
+    float: none;
+    margin: 0;
+    width: 100%;
+}
+
+.single-tribe_events .secondary .tribe-events-venue-map {
+    clear: both;
+    width: 100%;
+}
+
+span.tribe-country-name {
+  position: absolute;
+  top: -10000px;
+  visibility: hidden;
+}
+
+h3.tribe-events-related-events-title {
+    @include border-top(regular);
+    font-size: inhetrit !important;
+    margin: 0 0 1rem;
+}
+
+.article-content ul.tribe-related-events {
+    list-style: none outside;
+    padding: 0;
+}
+
+.tribe-related-events {
+    @include grid-collapse;
+
+    li {
+        @include border-top(light);
+        margin-top: 1rem;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        @include grid-column(12, $grid-twelve);
+        
+        @include media-up($medium-screen) {
+            @include grid-column(4, $grid-twelve);
+            margin-top: 0;
+        }
+
+        h4 {
+            @include bold;
+            font-size: 1.5rem;
+            margin-bottom: 0;
+
+            @include media-up($medium-screen) {
+                @include regular-condensed;
+            }
+        }
+
+        span {
+            font-size: 1rem;
+        }
+    }
+}
+
+.tribe-related-event-info {
+    font-size: 1rem;
+}
+
+.article-nav-previous span,
+.article-nav-next span {
+    @include bold;
+}
+
+.recurringinfo {
+    display: none;
+}

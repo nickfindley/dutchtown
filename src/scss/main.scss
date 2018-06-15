@@ -1,0 +1,635 @@
+@import "bourbon/bourbon.scss";
+@import "base/base.scss";
+@import "neat/neat.scss";
+
+@import "partials/_variables.scss";
+@import "partials/_mixins.scss";
+@import "partials/_type.scss";
+@import "partials/_borders.scss";
+@import "partials/_grid.scss";
+@import "partials/_tribe-events.scss";
+@import "partials/_woocommerce.scss";
+
+@import "flexinav/flexinav.scss";
+
+body {
+    @include media-up($small-screen) {
+        padding-top: $navbar-height;
+    }
+}
+
+//  multiline underline animation:
+//  https://codepen.io/christiancroser/pen/xqrLBm
+.site-title, .site-content, .site-footer {
+    & p a, & blockquote a, & pre a, & span a,
+    & dl a, & ul a , & ol a,
+    & h1 a, & h2 a, & h3 a, & h4 a, & h5 a, & h6 a {
+        background-image: linear-gradient($theme-primary calc(100% - .125rem), $link-underline-color $b-2);
+        background-repeat: no-repeat;
+        background-size: 0% 100%;
+        transition: background-size 1s ease-in-out;
+
+        &:hover {
+            background-size: 100% 100%;
+        }
+    }
+}
+
+.article-title a {
+    text-decoration: none;
+}
+
+.site-title, .site-content {
+    & h1 a, & h2 a, & h3 a, & h4 a, & h5 a, & h6 a {
+        color: $heading-link-color;
+
+        &:hover {
+            color: $heading-link-hover-color;
+        }
+    }
+}
+
+main > div:last-child {
+    padding-bottom: $s-xxl;
+}
+
+.site-footer {
+    background-color: $theme-black;
+    box-shadow: 0 -.125rem 1rem rgba($theme-black, .75);
+    padding: $s-xxl 0;
+}
+
+.sidebar {
+    section {
+        margin-top: $s-xxl;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        dd {
+            margin: 0 0 $s-l;
+        }
+    }
+}
+
+.news-container {
+    margin-top: $s-xxl;
+}
+
+.news-main {
+    article {
+        margin-top: $s-xxl;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .article-header-img {
+            margin-bottom: 0;
+        }
+
+        .article-posted ul {
+            display: block;
+            margin-bottom: $s-xl;
+
+            @include media-up($tiny-screen){
+                display: flex;
+                justify-content: flex-start;
+                margin-bottom: $s-l;
+
+                li {
+                    margin-left: $s-m;
+
+                    @include media-up($small-screen) {
+                        margin-left: $s-xl;
+                    }
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            @include media-up($large-screen) {
+                display: block;
+
+                li {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+.post-main {
+    article {
+        padding-bottom: $s-xxl;
+        
+        .article-posted ul {
+            margin-bottom: $s-xl;
+
+            @include media-up($small-screen) {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: $s-xl;
+            }
+
+            &.fa-ul {
+                margin-left: 1.5rem !important;
+            }
+
+            li {
+                display: block;
+                margin-right: $s-xxl;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .article-has-no-img {
+        .article-header {
+            margin-top: $s-xxl;
+        }
+    }
+}
+
+//  To accomodate the fixed navbar when jumping to sections
+.comments-container, .comment-form-container {
+    padding-top: $navbar-height;
+    margin-top: $navbar-height * -1;
+}
+
+//  To remove the excessive padding when the section gets :target-ed
+.comments-container-target,
+.comment-form-container-target {
+    margin-top: 0;
+
+    &:after {
+        clear: both;
+        content: "";
+        display: block;
+    }
+}
+
+//  Highlight section on :target
+//  https://aarontgrogg.com/blog/2012/05/18/pure-css-highlight-for-link-target/
+:target .comments-container-target,
+:target .comment-form-container-target {
+    animation: highlight 5s;
+}
+
+@keyframes highlight {
+    0% { background-color: transparent; }
+    10% { background-color: $theme-primary; }
+    100% { background-color: transparent; }
+}
+
+//  Move padding to the inner (*-container-target) div
+//  so highlight fills all the way to footer
+main > div.comment-form-container {
+    padding-bottom: 0;
+}
+
+.comment-form-container-target {
+    padding-bottom: $s-xxl;
+}
+
+.comments,
+.comment-form {
+    margin-top: $s-xxl;
+}
+
+.comments-list {
+    .comment-header {
+        h4 {
+            margin: 0;
+        }
+
+        .comment-in-reply-to {
+            margin: 0;
+        }
+    }
+
+    .comment-content {
+        margin-top: $s-m;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+.archive-container {
+    padding-bottom: $s-xxl;
+}
+
+.archive-main {
+    article {
+        margin-top: $s-xxl;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &.article-has-img {
+            .article-header-img {
+                img {
+                    height: $s-xxl * 6;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .article-posted ul {
+            margin-bottom: $s-l;
+
+            @include media-up($small-screen) {
+                display: flex;
+                justify-content: flex-start;
+                margin-bottom: $s-l;
+
+                li {
+                    display: block;
+                    margin-left: $s-l;
+                            
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.search-container {
+    padding-bottom: $s-xxl;
+    padding-top: $s-xxl;
+}
+
+.search-main {
+    article {
+        //  Search results need less whitespace than regular articles
+        margin-top: $s-l;
+
+        &:before {
+            content: "";
+            display: table;
+            table-layout: fixed;
+        }
+
+        &:after {
+            clear: both;
+            content: "";
+            display: block;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .article-header {
+            h2 {
+                margin-bottom: 0;
+            }
+        }
+
+        .article-posted ul {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: $s-l;
+
+            li {
+                display: block;
+                margin-left: $s-l;
+                        
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+.page-container {
+    padding-bottom: $s-xxl;
+}
+
+.page-main {
+    .article-has-no-img {
+        .article-header {
+            margin-top: $s-xxl;
+        }
+    }
+
+    .article-content-container {
+        padding-top: 1.5rem;
+    }
+}
+
+.front-carousel img {
+    width: auto;
+    }
+
+.front-carousel-item {
+    width: 100%;
+    }
+
+.page-header-img,
+.article-header-img,
+.front-carousel-item {
+    position: relative;
+
+    .page-title,
+    .article-title,
+    .carousel-title {
+        background: transparent;
+        bottom: auto;
+        left: 0;
+        padding-left: 0;
+        padding-top: 0;
+        position: relative;
+
+        @include media-up($tiny-screen) {
+            background: linear-gradient(
+                to bottom,
+                rgba($theme-black,0),
+                rgba($theme-black,.625)
+                );
+            bottom: .5rem;
+            left: 0;
+            margin: 0;
+            padding-top: $s-xxl;
+            position: absolute;
+            text-align: left;
+            width: 100%;
+        }
+
+        h1,
+        h2 {
+            width: 100%;
+        }
+    }
+}
+
+.page-header.page-has-no-img {
+    margin-top: $s-xxl;
+    margin-bottom: $s-l;
+}
+
+.archive-main .article-title.oversized {
+    background: transparent;
+    bottom: auto;
+    left: 0;
+    padding-left: 0;
+    padding-top: 0;
+    position: relative;
+}
+
+@include media-up($medium-screen) {
+    .news-main,
+    .page-main,
+    .post-main {
+        .article-has-img .article-title {
+            h1,
+            h2 {
+                width: 75%;
+            }
+        }
+    }
+}
+
+@include media-up($tiny-screen) {
+    .archive-main .article-has-img .article-title,
+    .front-main .carousel-title,
+    .news-main .article-has-img .article-title,
+    .search-main .article-has-img .article-title {
+        padding-left: $s-l;
+    }
+}
+
+.archive-main .article-has-img .article-title.oversized,
+.search-main .article-has-img .article-title.oversized {
+    padding-left: 0;
+}
+
+.page-header.page-has-img {
+    margin-bottom: 1rem;
+}
+
+.page-title h1 {
+    margin-bottom: 1rem;
+    margin-top: .5rem;
+}
+
+.pages-nav {
+    margin: $s-xxl 0;
+
+    ul {
+        display: inline;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline;
+            margin: 0 $s-l;
+            
+            a,
+            span {
+                display: block;
+                float: left;
+                margin: 0 $s-xs;
+                padding: $s-xs $s-s;
+            }
+        }
+    }
+}
+
+// .carousel-title {
+//     h2 {
+//         padding-bottom: $s-xl;
+//         text-align: center;
+//     }
+// }
+
+// .front-carousel-item {
+//     visibility: hidden;
+// }
+
+// .flickity-slider > .front-carousel-item {
+//     visibility: visible;
+// }
+
+// .flickity-page-dots {
+//     bottom: 1.5rem;
+
+//     .dot {
+//         background-color: transparent;
+//         border: $b-2 solid $theme-white;
+//         height: $s-l;
+//         opacity: 1;
+//         width: $s-l;
+
+//         &.is-selected {
+//             background-color: $theme-white;
+//         }
+//     }
+// }
+
+// .front-container {
+//     padding: $s-xxl 0;
+
+//     section {
+//         margin-bottom: $s-xxl;
+
+//         &:last-child {
+//             margin-bottom: 0;
+//         }
+//     }
+// }
+
+// .front-events,
+// .front-news {
+//     h2 {
+//         @include border-top(regular);
+//     }
+
+//     &:after {
+//         clear: both;
+//         content: "";
+//         display: block;
+//     }
+
+//     .section-header {
+//         font-size: 1.5rem;
+//     }
+// }
+
+// .front-news {
+//     article {
+//         &:after {
+//             clear: both;
+//             content: "";
+//             display: block;
+//         }
+//     }
+
+//     h3 {
+//         font-size: 2.5rem;
+//         @include bold-condensed;
+//         letter-spacing: -.08rem;
+//         line-height: 1;
+//     }
+
+//     .article-posted ul {
+//         display: flex;
+//         justify-content: flex-start;
+//         margin-bottom: $s-m;
+
+//         li {
+//             display: block;
+//             margin-left: $s-l;
+                    
+//             &:first-child {
+//                 margin-left: 0;
+//             }
+//         }
+//     }
+// }
+
+// .front-events {
+//     ul {
+//         display: inline;
+
+//         li {
+//             @include border-top(light);
+//             display: block;
+
+//             h3 {
+//                 @include bold-condensed;
+//                 margin-bottom: 0;
+//             }
+
+//             .event-date {
+//                 color: $text-color-light;
+//                 font-size: .875rem;
+//                 margin-top: 0;
+//             }
+//         }
+//     }
+// }
+
+.entry-content ul,
+.article-content ul {
+    margin-bottom: 1rem;
+}
+
+.site-footer h3 {
+    margin-top: 1rem;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+@include media-down($small-screen) {
+    figure.alignleft,
+    img.alignleft,
+    figure.alignright,
+    img.alignright {
+        float:none;
+    }
+}
+
+.wp-caption {
+    margin-bottom: .5rem;
+}
+
+.wp-caption .wp-caption-text {
+    color: $text-color-medium;;
+    @include light;
+    font-size: .875rem;
+    line-height: 1.25;
+    margin: .75rem 0 0;
+}
+
+.fourohfour-search {
+    @include clearfix;
+
+    h2 {
+        @include border-top(light);
+    }
+    
+    .search-form {
+        width: calc(100% - 1rem);
+
+        @include media-up($medium-screen) {
+            //width: 50%;
+        }
+
+        label {
+            float: left;
+            margin-right: .5rem;
+        }
+
+        input {
+            @include regular;
+            font-size: 1.5rem;
+            line-height: 1.0625;
+            padding: .5rem 1rem;
+        }
+
+        .search-field {
+            border-color: $text-color-medium;
+        }
+
+        .search-submit {
+            background-color: $theme-black;
+            border: 0;
+            color: $theme-yellow;
+        }
+    }
+}

@@ -1,0 +1,447 @@
+@import "partials/_type-avenir.scss";
+
+body {
+    color: $text-color-dark;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+    @include regular;
+    line-height: 1.75;
+}
+
+b, strong {
+    @include bold;
+    font-style: normal;
+    font-weight: normal;
+}
+
+i, em {
+    @include regular-italic;
+    font-style: normal;
+    font-weight: normal;
+}
+
+b i, b em,
+strong i, strong em,
+i b, i strong,
+em b, em strong {
+    @include bold-italic;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.flexinav {
+    @include regular;
+    letter-spacing: 0;
+    text-transform: none;
+
+    .nav-brand {
+        @include regular;
+        font-size: 1rem;
+
+        @include media-up($small-screen) {
+            font-size: 1.25rem;
+        }
+
+        letter-spacing: .2rem;
+        text-transform: uppercase;
+    }
+
+    .flexinav_collapse {
+        @include regular;
+        font-size: 1rem;
+        letter-spacing: .2rem;
+        text-transform: uppercase;
+
+        svg {
+            margin-right: 1rem;
+        }
+    }
+}
+
+.flexinav_menu > li {
+    @include regular-condensed;
+    letter-spacing: .075rem;
+    text-transform: uppercase;
+    
+    @include media-up($medium-screen) {
+        letter-spacing: .125rem;
+    }
+}
+
+.flexinav_ddown {
+    @include regular;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.site-title, .site-content, .tribe-events-loop {
+    & div a, & p a, & blockquote a, & pre a, & span a,
+    & dl a, & ul a , & ol a {
+        color: $link-color;
+
+        &:hover {
+            color: $link-hover-color;
+        }
+    }
+}
+
+.site-title, .site-content, .tribe-events-loop {
+    & h1 a, & h2 a, & h3 a, & h4 a, & h5 a, & h6 a {
+        color: $heading-link-color;
+
+        &:hover {
+            color: $heading-link-hover-color;
+        }
+    }
+}
+
+.site-title {
+    @include heavy;
+    font-size: $font-base * 4;
+}
+
+.sidebar {
+    font-size: $font-base * .875;
+
+    dd {
+        font-size: $font-base * .8125;
+    }
+}
+
+.article-posted,
+.article-footer {
+    font-size: $font-base * .6875;
+
+    @include media-up($medium-screen) {
+        font-size: $font-base * .75;
+    }
+}
+
+.page-main,
+.post-main {
+    .article-posted,
+    .article-footer,
+    .article-nav {
+        font-size: .75rem;
+
+        @include media-up($medium-screen) {
+            font-size: $font-base * .875;
+        }
+    }
+
+    .article-content {
+        font-size: $font-base;
+        
+        @include media-up($medium-screen) {
+            font-size: $font-base * 1.25;
+        }
+    }
+}
+
+.article-nav-previous,
+.article-nav-next {
+    @include bold;
+
+    a {
+        @include regular;
+
+        i, em {
+            @include regular-italic;
+        }
+    }
+
+    i, em { 
+        @include bold-italic;
+    }
+}
+
+.article-nav-next {
+    text-align: right;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $heading-color;
+}
+
+
+h1 {
+    font-size: $font-base * 3;
+    @include bold;
+    letter-spacing: -.05rem;
+    line-height: 1;
+
+    @include media-up($small-screen) {
+        font-size: $font-base * 5;
+    }
+
+    i, em {
+        @include bold-italic;
+    }
+}
+
+.search-main h1 {
+    font-size: $font-base * 3;
+    @include regular-condensed;
+    line-height: 1;
+
+    span {
+        @include bold;
+
+        i, em {
+            @include bold-italic;
+        }
+    }
+
+    @include media-up($small-screen) {
+        font-size: $font-base * 4;
+    }
+
+    i, em {
+        @include regular-condensed-italic;
+    }
+}
+
+h2 {
+    font-size: $font-base* 3;
+    @include bold;
+    letter-spacing: -.05rem;
+    line-height: 1;
+
+    @include media-up($small-screen) {
+        font-size: $font-base * 4;
+    }
+
+    i, em { 
+        @include bold-italic;
+    }
+}
+
+.carousel-title h2 {
+    span {
+        @include light;
+
+        i, em {
+            @include light-italic;
+        }
+    }
+}
+
+
+.site-content .archive-main .article-header-img {
+    .oversized {
+        h1,
+        h2 {
+            color: $heading-color;
+            text-shadow: none;
+
+            a {
+                color: $heading-link-color;
+
+                &:hover {
+                    color: $heading-link-hover-color;
+                }
+            }
+        }
+    }
+}
+
+.site-content .page-header-img,
+.site-content .article-header-img,
+.site-content .front-carousel-item {
+    h1,
+    h2 {
+        color: $heading-color;
+        text-shadow: none;
+
+        a {
+            color: $heading-link-color;
+
+            &:hover {
+                color: $heading-link-hover-color;
+            }
+        }
+    }
+
+    @include media-up($tiny-screen) {
+        h1,
+        h2 {
+            color: $theme-white;
+            text-shadow: .125rem .125rem .25rem rgba($theme-black, .75);
+
+            a {
+                color: $theme-white;
+
+                &:hover {
+                    color: $theme-white;
+                }
+            }
+        }
+    }
+}
+
+.archive-main h2 {
+    font-size: $font-base * 2.5;
+    @include bold;
+    line-height: 1;
+
+    @include media-up($small-screen) {
+        font-size: $font-base* 3;
+    }
+
+    i, em { 
+        @include bold-italic;
+    }
+}
+
+.page-title h1 span {
+    @include regular-condensed;
+
+    i, em {
+        @include regular-condensed-italic;
+    }
+}
+
+.news-main {
+    @include media-up($large-screen) {
+        .article-has-no-img h2 {
+            font-size: $font-base* 3.25;
+            @include bold-condensed;
+            line-height: 1;
+
+            i, em {
+                @include bold-condensed-italic;
+            }
+        }
+    }
+}
+
+.search-main h2 {
+    font-size: $font-base * 2;
+    line-height: 1;
+
+    @include media-up($small-screen) {
+        font-size: $font-base * 2.5;
+    }
+}
+
+h3 {
+    @include bold;
+    font-size: $font-base * 1.75;
+    line-height: 1.25;
+
+    @include media-up($small-screen) {
+        font-size: $font-base * 2;
+    }
+}
+
+.sidebar h3 {
+    @include bold-condensed;
+}
+
+.site-footer {
+    color: darken($theme-primary, 15%);
+    font-size: $font-base * .875;
+
+    p a, blockquote a, pre a, span a,
+    dl a, ul a , ol a,
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+        color: $theme-primary;
+
+        &:hover {
+            color: darken($theme-primary, 15%);
+        }
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: $theme-primary;
+        font-size: $font-base * 1.25;
+        @include regular;
+        letter-spacing: .125rem;
+        line-height: 1.25;
+        text-transform: uppercase;
+
+        i, em {
+            @include regular-italic;
+        }
+    }
+}
+
+h4 {
+    @include bold;
+    font-size: $font-base * 1.5;
+    line-height: 1.25;
+
+    i, em {
+        @include bold-italic;
+    }
+}
+
+h5 {
+    @include bold-condensed;
+    font-size: $font-base * 1.25;
+    line-height: 1.25;
+
+    i, em { 
+        @include bold-condensed-italic;
+    }
+}
+
+h6 {
+    @include regular-condensed;
+    font-size: $font-base;
+    line-height: 1.5;
+
+    i, em {
+        @include regular-condensed-italic;
+    }
+}
+
+.entry-content ul,
+.article-content ul {
+    list-style: disc outside;
+    padding-left: 1.125rem;
+}
+
+.comments {
+    .comment-header {
+        h4 {
+            font-size: $font-base;
+            @include regular;
+            line-height: 1;
+
+            i, em {
+                @include regular-italic;
+            }
+        }
+    }
+
+    .comment-author-link {
+        @include bold;
+
+        i, em {
+            @include bold-italic;
+        }
+    }
+
+    .comment-edit-link {
+        font-size: $font-base * .75;
+    }
+
+    .comment-in-reply-to,
+    .comment-footer {
+        font-size: $font-base * .875;
+    }
+
+    .comment-awaiting-moderation {
+        color: $text-color-light;
+        @include light-italic;
+    }
+}
+
+.pages-nav .current {
+    @include bold;
+
+    i, em {
+        @include bold-italic;
+    }
+}

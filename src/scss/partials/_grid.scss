@@ -1,0 +1,529 @@
+$grid-twelve: (
+    columns: 12,
+    gutter: 20px
+);
+
+$grid-sixteen: (
+    columns: 16,
+    gutter: 20px
+);
+
+.site-header {
+    @include grid-container;
+
+    .site-title {
+        @include grid-column(16, $grid-sixteen);
+    }
+}
+
+@include media-up($small-screen) {
+    .flexinav {
+        @include grid-container;
+    }
+
+    .flexinav_wrapper {
+        @include grid-column(16, $grid-sixteen);
+    }
+}
+
+.site-footer {
+    @include grid-container;
+
+    section {
+        @include grid-column(16, $grid-sixteen);
+        
+        @include media-up($small-screen) {
+            @include grid-column(4, $grid-sixteen);
+        }
+    }
+
+    &.post-page-footer {
+        section {
+            @include grid-column(16, $grid-sixteen);
+            
+            @include media-up($tiny-screen) {
+                @include grid-shift(1, $grid-sixteen);
+                @include grid-column(14, $grid-sixteen);
+            }
+
+            @include media-up($small-screen) {
+                @include grid-shift(2, $grid-sixteen);
+                @include grid-column(6, $grid-sixteen);
+            }
+
+            @include media-up($medium-screen) {
+                @include grid-shift(0, $grid-sixteen);
+                @include grid-column(4, $grid-sixteen);
+            }
+        }
+    }
+}
+
+.front-container {
+    @include grid-container;
+
+    .front-main {
+        @include grid-column(16, $grid-sixteen);
+    }
+}
+
+.news-container {
+    @include grid-container;
+
+    .news-main {
+        @include grid-column(16, $grid-sixteen);
+
+        @include media-up($small-screen) {
+            @include grid-column(12, $grid-sixteen);
+        }
+
+        @include media-up($large-screen) {
+            article {
+                @include grid-container;
+                @include grid-collapse;
+
+                &.article-has-img {
+                    .article-header-img {
+                        @include grid-column(12, $grid-twelve);
+
+                        &::after {
+                            clear: both;
+                            content: "";
+                            display: block;
+                        }
+
+                        .article-title {
+                            @include grid-container;
+
+                            h2 {
+                                @include grid-shift(4, $grid-twelve);
+                                @include grid-column(8, $grid-twelve);
+                                margin-left: 0;
+                            }
+                        }
+                    }
+
+                    .article-posted {
+                        @include grid-column(4, $grid-twelve);
+                    }
+
+                    .article-content {
+                        @include grid-column(8, $grid-twelve);
+                    }
+                }
+
+                &.article-has-no-img {
+                    .article-header {
+                        @include grid-column(4, $grid-twelve);
+                    }
+
+                    .article-content {
+                        @include grid-column(8, $grid-twelve);
+                    }
+
+                }
+
+                .article-footer {
+                    @include grid-shift(4, $grid-twelve);
+                    @include grid-column(8, $grid-twelve);
+                }
+            }
+
+            .pages-nav {
+                @include grid-shift(4, $grid-twelve);
+                @include grid-column(8, $grid-twelve);
+            }
+        }
+    }
+
+    .news-sidebar {
+        @include grid-column(16, $grid-sixteen);
+
+        @include media-up($small-screen) {
+            @include grid-column(4, $grid-sixteen);
+        }
+    }
+}
+
+.post-container {
+    @include media-up($huge-screen) {
+        @include grid-container;
+    }
+
+    .article-has-img {
+        .article-title {
+            @include grid-container;
+
+            h1 {
+                @include grid-column(16, $grid-sixteen);
+                @include media-up($tiny-screen) {
+                    @include grid-shift(1, $grid-sixteen);
+                    @include grid-column(14, $grid-sixteen);
+                }
+
+                @include media-up($small-screen) {
+                    @include grid-shift(2, $grid-sixteen);
+                    @include grid-column(12, $grid-sixteen);
+                }
+            }
+        }
+
+        .article-posted-container {
+            @include grid-container;
+
+            .article-posted {
+                @include grid-column(16, $grid-sixteen);
+                @include media-up($tiny-screen) {
+                    @include grid-shift(1, $grid-sixteen);
+                    @include grid-column(14, $grid-sixteen);
+                }
+
+                @include media-up($small-screen) {
+                    @include grid-shift(2, $grid-sixteen);
+                    @include grid-column(12, $grid-sixteen);
+                }
+            }
+        }
+
+        .article-content-container {
+            @include grid-container;
+
+            .article-content {
+                @include grid-column(16, $grid-sixteen);
+                @include media-up($tiny-screen) {
+                    @include grid-shift(1, $grid-sixteen);
+                    @include grid-column(14, $grid-sixteen);
+                }
+
+                @include media-up($small-screen) {
+                    @include grid-shift(2, $grid-sixteen);
+                    @include grid-column(12, $grid-sixteen);
+                }
+            }
+        }
+    }
+
+    .article-has-no-img {
+        @include grid-container;
+
+        .article-header,
+        .article-content {
+            @include grid-column(16, $grid-sixteen);
+
+            @include media-up($tiny-screen) {
+                @include grid-shift(1, $grid-sixteen);
+                @include grid-column(14, $grid-sixteen);
+            }
+
+            @include media-up($small-screen) {
+                @include grid-shift(2, $grid-sixteen);
+                @include grid-column(12, $grid-sixteen);
+            }
+        }
+    }
+
+    .article-footer-container {
+        @include grid-container;
+
+        .article-footer {
+            @include grid-column(16, $grid-sixteen);
+
+            @include media-up($tiny-screen) {
+                @include grid-shift(1, $grid-sixteen);
+                @include grid-column(14, $grid-sixteen);
+            }
+
+            @include media-up($small-screen) {
+                @include grid-shift(2, $grid-sixteen);
+                @include grid-column(12, $grid-sixteen);
+            }
+        }
+
+        .article-nav {
+            .article-nav-previous {
+                @include grid-column(8, $grid-sixteen);
+
+                @include media-up($tiny-screen) {
+                    @include grid-shift(1, $grid-sixteen);
+                    @include grid-column(7, $grid-sixteen);
+                }
+
+                @include media-up($small-screen) {
+                    @include grid-shift(2, $grid-sixteen);
+                    @include grid-column(6, $grid-sixteen);
+                }
+            }
+
+            .article-nav-next {
+                @include grid-column(8, $grid-sixteen);
+
+                @include media-up($tiny-screen) {
+                    @include grid-shift(1, $grid-sixteen);
+                    @include grid-column(7, $grid-sixteen);
+                }
+
+                @include media-up($small-screen) {
+                    @include grid-shift(2, $grid-sixteen);
+                    @include grid-column(6, $grid-sixteen);
+                }
+            }
+
+            &:after {
+                clear: both;
+                content: "";
+                display: block;
+            }
+        }
+    }
+
+    .comments-container {
+        @include grid-container;
+
+        .comments {
+            @include grid-column(16, $grid-sixteen);
+
+            @include media-up($tiny-screen) {
+                @include grid-shift(1, $grid-sixteen);
+                @include grid-column(14, $grid-sixteen);
+            }
+
+            @include media-up($small-screen) {
+                @include grid-shift(2, $grid-sixteen);
+                @include grid-column(12, $grid-sixteen);
+            }
+
+            .comments-list {
+                .comments-child {
+                    margin-left: 6.4%;
+
+                    .comments-child {
+                        margin-left: 7.2%;
+
+                        .comments-child {
+                            margin-left: 7.6%;
+
+                            .comments-child {
+                                margin-left: 7.8%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @include media-up($tiny-screen) {
+                .comments-list {
+                    .comments-child {
+                        margin-left: 6.4%;
+
+                        .comments-child {
+                            margin-left: 6.8%;
+
+                            .comments-child {
+                                margin-left: 7.6%;
+
+                                .comments-child {
+                                    margin-left: 7.8%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @include media-up($small-screen) {
+                .comments-list {
+                    .comments-child {
+                        margin-left: 8.333333%;
+
+                        .comments-child {
+                            margin-left: 9.5%;
+
+                            .comments-child {
+                                margin-left: 10.2%;
+
+                                .comments-child {
+                                    margin-left: 11.5%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .comment-form-container {
+        @include grid-container;
+
+        .comment-form {
+            @include grid-column(16, $grid-sixteen);
+
+            @include media-up($tiny-screen) {
+                @include grid-shift(1, $grid-sixteen);
+                @include grid-column(14, $grid-sixteen);
+            }
+
+            @include media-up($small-screen) {
+                @include grid-shift(2, $grid-sixteen);
+                @include grid-column(12, $grid-sixteen);
+            }
+        }
+    }
+}
+
+.page-title {
+    @include grid-container;
+
+    h1 {
+        @include grid-column(16, $grid-sixteen);
+    }
+}
+.archive-container,
+.search-container {
+    @include grid-container;
+
+    .archive-main,
+    .search-main {
+        @include grid-column(16, $grid-sixteen);
+
+        @include media-up($small-screen) {
+            @include grid-column(12, $grid-sixteen);
+        }
+    }
+
+    .archive-sidebar,
+    .search-sidebar {
+        @include grid-column(16, $grid-sixteen);
+
+        @include media-up($small-screen) {
+            @include grid-column(4, $grid-sixteen);
+        }
+    }
+}
+
+.page-container {
+    @include media-up($huge-screen) {
+        @include grid-container;
+    }
+
+    .article-has-img {
+        .article-title {
+            @include grid-container;
+
+            h1 {
+                @include grid-column(16, $grid-sixteen);
+                @include media-up($tiny-screen) {
+                    @include grid-shift(1, $grid-sixteen);
+                    @include grid-column(14, $grid-sixteen);
+                }
+
+                @include media-up($small-screen) {
+                    @include grid-shift(2, $grid-sixteen);
+                    @include grid-column(12, $grid-sixteen);
+                }
+            }
+        }
+
+        .article-content-container {
+            @include grid-container;
+
+            .article-content {
+                @include grid-column(16, $grid-sixteen);
+                @include media-up($tiny-screen) {
+                    @include grid-shift(1, $grid-sixteen);
+                    @include grid-column(14, $grid-sixteen);
+                }
+
+                @include media-up($small-screen) {
+                    @include grid-shift(2, $grid-sixteen);
+                    @include grid-column(12, $grid-sixteen);
+                }
+            }
+        }
+    }
+
+    .article-has-no-img {
+        @include grid-container;
+
+        .article-header,
+        .article-content {
+            @include grid-column(16, $grid-sixteen);
+
+            @include media-up($tiny-screen) {
+                @include grid-shift(1, $grid-sixteen);
+                @include grid-column(14, $grid-sixteen);
+            }
+
+            @include media-up($small-screen) {
+                @include grid-shift(2, $grid-sixteen);
+                @include grid-column(12, $grid-sixteen);
+            }
+        }
+    }
+
+    .article-footer-container {
+        @include grid-container;
+
+        .article-footer {
+            @include grid-column(16, $grid-sixteen);
+
+            @include media-up($tiny-screen) {
+                @include grid-shift(1, $grid-sixteen);
+                @include grid-column(14, $grid-sixteen);
+            }
+
+            @include media-up($small-screen) {
+                @include grid-shift(2, $grid-sixteen);
+                @include grid-column(12, $grid-sixteen);
+            }
+        }
+    }
+}
+
+.front-container {
+    @include grid-container;
+
+    .front-events {
+        .section-header {
+            @include grid-column(16, $grid-sixteen);
+        }
+
+        ul li {
+            @include grid-column(16, $grid-sixteen);
+
+            @include media-up($small-screen) {
+                @include grid-column(8, $grid-sixteen);
+            }
+
+            @include media-up($medium-screen) {
+                @include grid-column(4, $grid-sixteen);
+            }
+        }
+    }
+
+    .front-news {
+        .section-header {
+            @include grid-column(16, $grid-sixteen);
+        }
+
+        .article-has-img {
+            .article-content {
+                @include grid-column(10, $grid-sixteen);
+            }
+
+            .article-img {
+                @include grid-column(6, $grid-sixteen);
+            }
+        }
+
+        .article-has-no-img {
+            .article-header {
+                @include grid-column(6, $grid-sixteen);
+            }
+
+            .article-content {
+                @include grid-column(10, $grid-sixteen);
+            }
+        }
+    }
+}

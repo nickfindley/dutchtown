@@ -1,0 +1,80 @@
+//	Screen sizes
+//	Use media-up($screen-size) to target specified size and up
+//	Use media-down($screen-size) to target up to specified size
+$tiny-screen:		576px;		//	landscape phones
+$small-screen:		768px;		//	tablets
+$medium-screen: 	992px;		//	desktops
+$large-screen:		1100px;     //	larger screens
+$huge-screen:		2000px;		//	huge screens
+
+//	Colors
+$theme-yellow:  rgb(249,228,6);     //  hsl(55,95%,50%)
+$theme-red:     rgb(217,38,38);     //  hsl(360,70%,50%)
+$theme-blue:    rgb(64,96,191);     //  hsl(225,50%,50%)
+
+$theme-purple:  rgb(106,64,191);    //  hsl(260,50%,50%)
+$theme-green:   rgb(4,174,16);     //  hsl(135,90%,50%)
+$theme-orange:  rgb(217,98,38);     //  hsl(20,70%,50%)
+
+$theme-black:   rgb(8,8,8);         //  hsl(0,0%,3%);
+$theme-gray:    rgb(77,77,77);      //  hsl(0,0%,30%);
+$theme-white:   rgb(255,255,255);   //  hsl(0,0%,100%);
+
+$theme-primary:     $theme-yellow;
+$theme-secondary:   $theme-red;
+
+$text-color:            $theme-black;
+$text-color-light:      lighten($text-color,60%);
+$text-color-medium:     lighten($text-color,45%);
+$text-color-dark:       lighten($text-color,30%);
+$text-color-full:       $text-color;
+
+$link-color:            lighten($theme-black,45%);
+$link-hover-color:      $theme-black;
+$link-underline-color:  $theme-primary;
+
+$heading-color:             $theme-black;
+$heading-link-color:        lighten($heading-color,15%);
+$heading-link-hover-color:  $heading-color;
+
+//	Spaces for padding and margins
+$space: 1rem;
+$s-xxs: $space * .0625; //  .0625rem
+$s-xs:  $space * .125;  //  .125rem
+$s-s:   $space * .25;   //  .25rem
+$s-m:   $space * .5;    //  .5rem
+$s-l:   $space;         //  1rem
+$s-xl:  $space * 1.5;   //  1.5rem
+$s-xxl: $space * 2;     //  2rem
+
+//	Widths and heights
+$navbar-height: 5.5rem;
+
+//	Base font size:
+$font-base:		1rem;
+
+//  Base border styles
+$border-base:       .0625rem;
+$border-color:      $theme-black;
+$border-padding:    .5rem;
+
+$b-1:       $border-base;        //  .0625rem
+$b-2:       $border-base * 2;    //  .125rem
+$b-3:       $border-base * 3;    //  .1875rem
+$b-4:       $border-base * 4;    //  .25rem
+
+$border-light:      #{$b-1} solid #{$border-color};
+$border-regular:    #{$b-2} solid #{$border-color};
+$border-bold:       #{$b-3} solid #{$border-color};
+$border-heavy:      #{$b-4} solid #{$border-color};
+
+$border-map: (
+	light:		$border-light,
+	regular:	$border-regular,
+	bold:		$border-bold,
+	heavy:		$border-heavy
+);
+
+//	DT2 colors
+$theme-dt2-light:	#bf272d;
+$theme-dt2-dark:	#471110;

@@ -1,0 +1,145 @@
+.sidebar section,
+.site-footer section {
+    @include border-top(regular);
+}
+
+.archive-main,
+.news-main,
+.page-main,
+.post-main {
+    .article-footer {
+        @include border-top(light);
+    }
+}
+
+.news-main {
+    .article-header-img {
+        @include border-top(regular);
+    } 
+
+    .article-has-no-img {
+        .article-title {
+            @include border-top(regular);
+        }
+
+        @include media-up($sc-768) {
+            .article-posted {
+                @include border-top(light);
+            }
+        }
+
+        @include media-up($large-screen) {
+            .article-content {
+                @include border-top(regular);
+            }
+        }
+    }
+
+    @include media-up($sc-1100) {
+        .article-has-img {
+            .article-posted,
+            .article-content {
+                @include border-top(light);
+            }
+        }
+    } 
+}
+
+
+
+.comments,
+.comment-form {
+    @include border-top(regular);
+
+    .comments-list {
+        > li {
+            @include border-top(light);
+        }
+    }
+}
+
+.archive-main {
+    .page-header {
+        @include border-top(regular);
+    }
+
+    article {
+        .article-header-img {
+            @include border-top(regular);
+        }
+
+        &.article-has-no-img {
+            .article-title {
+                @include border-top(regular);
+            }
+        }
+    }
+}
+
+.archive-title {
+    h1 {
+        @include border-top(heavy);
+    }
+}
+.archive-header-img,
+.article-header-img {
+    .archive-title,
+    .article-title {
+        h1 {
+            border-top: 0;
+        }
+    }
+}
+
+.search-main {
+    .page-header h1 {
+        @include border-top(regular);
+    }
+
+    .article-header h2 {
+        @include border-top(light);
+    }
+}
+
+.page-main {
+    .article-has-no-img {
+        .article-title {
+            @include border-top(regular);
+        }
+    }
+}
+
+.front-events,
+.front-news {
+    h2 {
+        @include border-top(regular);
+    }
+
+    ul li {
+        @include border-top(light);
+    }
+
+    .article-has-img {
+        .article-content,
+        .article-img {
+            @include border-top(light);
+        }
+    }
+    
+    .article-has-no-img {
+        .article-header,
+        .article-content {
+            @include border-top(light);
+        }
+    }
+}
+
+.archive-container .page-header h1 {
+    @include border-top(heavy);
+}
+
+.archive-container .page-header.page-has-img h1 {
+    @include media-up($tiny-screen) {
+        border-top: 0;
+    }
+}
