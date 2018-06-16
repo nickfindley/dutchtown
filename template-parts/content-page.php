@@ -46,7 +46,7 @@
 			<p>
 			<?php
 				if ( function_exists('yoast_breadcrumb') ) {
-					echo '<i class="fas fa-fw fa-folder"></i> ';
+					echo '<i class="fas fa-fw fa-map-marker"></i> ';
 					yoast_breadcrumb();
 					echo '<br>';
 				}

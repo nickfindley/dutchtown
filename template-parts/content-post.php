@@ -97,16 +97,17 @@
 			<p>
 			<?php
 				if ( function_exists('yoast_breadcrumb') ) {
+					echo '<i class="fas fa-fw fa-map-marker"></i> ';
 					yoast_breadcrumb();
 					echo '<br>';
 				}
 				dutchtown_updated_on( array(
-					'before_updated_on'	=> 'This post was updated on ',
-					'after_updated_on'	=> '. '
+					'before_updated_on'	=> '<i class="fas fa-fw fa-bookmark"></i> This post was updated on ',
+					'after_updated_on'	=> '.<br>'
 					)
 				);
 				dutchtown_oxford_categories( array(
-					'before_categories'	=> 'Read more news about ',
+					'before_categories'	=> '<i class="fas fa-fw fa-folder"></i> Read more news about ',
 					'after_categories'	=> '.'
 				));
 			?>

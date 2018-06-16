@@ -98,16 +98,17 @@ $event_id = get_the_ID();
 					<p>
 					<?php
 						if ( function_exists('yoast_breadcrumb') ) {
+							echo '<i class="fas fa-fw fa-map-marker"></i> ';
 							yoast_breadcrumb();
 							echo '<br>';
 						}
 						dutchtown_updated_on( array(
-							'before_updated_on'	=> 'This event was updated on ',
-							'after_updated_on'	=> '. '
+							'before_updated_on'	=> '<i class="fas fa-fw fa-bookmark"></i> This event was updated on ',
+							'after_updated_on'	=> '.<br>'
 							)
 						);
 						dutchtown_oxford_categories( array(
-							'before_categories'	=> 'See more ',
+							'before_categories'	=> '<i class="fas fa-fw fa-folder"></i> See more ',
 							'after_categories'	=> ' events.'
 						));
 					?>
