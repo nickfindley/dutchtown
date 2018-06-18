@@ -192,9 +192,10 @@ if ( ! function_exists( dutchtown_scripts ) ) :
 endif;
 add_action( 'wp_enqueue_scripts', 'dutchtown_enqueue' );
 
+//	Replace "read more" text
 if ( ! function_exists( dutchtown_read_more ) ) :
 	function dutchtown_read_more( $more ) {
-		return sprintf( '&hellip;&ensp;<a href="%1$s">%2$s&nbsp;<i class="fas fa-arrow-alt-circle-right"></i></a>', get_permalink( get_the_ID() ), __( 'Read&nbsp;more', 'dutchtown' ) );
+		return sprintf( '<a href="%1$s">%2$s&nbsp;<i class="fas fa-arrow-alt-circle-right"></i></a>', get_permalink( get_the_ID() ), __( 'Read&nbsp;more', 'dutchtown' ) );
 	}
 endif;
 add_filter( 'excerpt_more', 'dutchtown_read_more' );
@@ -291,10 +292,48 @@ add_filter('get_the_archive_title', function ($title) {
 //Page Slug Body Class
 function add_slug_body_class( $classes ) {
 	global $post;
+	
 	if ( isset( $post ) ) {
-	$classes[] = $post->post_type . '-' . $post->post_name;
+		$classes[] = $post->post_type . '-' . $post->post_name;
 	}
+	
 	return $classes;
-	}
-	add_filter( 'body_class', 'add_slug_body_class' );
+}
+add_filter( 'body_class', 'add_slug_body_class' );
+
+//	https://wordpress.stackexchange.com/questions/141125/allow-html-in-excerpt
+if ( ! function_exists( 'dutchtown_custom_wp_trim_excerpt' ) ) : 
+
+    function dutchtown_custom_wp_trim_excerpt($excerpt) {
+        global $post;
+        $raw_excerpt = $excerpt;
+        if ( '' == $excerpt ) {
+
+            $excerpt = get_the_content('');
+            $excerpt = strip_shortcodes( $excerpt );
+            $excerpt = apply_filters('the_content', $excerpt);
+            $excerpt = substr( $excerpt, 0, strpos( $excerpt, '</p>' ) + 4 );
+            $excerpt = str_replace(']]>', ']]&gt;', $excerpt);
+
+            $excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'dutchtown' ), get_the_title()) . '</a>'; 
+            $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end); 
+
+            //	$pos = strrpos($excerpt, '</');
+            //	f ($pos !== false)
+            //	Inside last HTML tag
+            //	$excerpt = substr_replace($excerpt, $excerpt_end, $pos, 0);
+            //	else
+            //	After the content
+            $excerpt .= $excerpt_more;
+
+            return $excerpt;
+
+        }
+        return apply_filters('custom_wp_trim_excerpt', $excerpt, $raw_excerpt);
+    }
+
+endif; 
+
+remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter('get_the_excerpt', 'dutchtown_custom_wp_trim_excerpt');
 ?>

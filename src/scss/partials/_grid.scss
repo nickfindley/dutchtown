@@ -527,3 +527,26 @@ $grid-sixteen: (
         }
     }
 }
+
+.tribe-events-pg-template {
+    @include grid-container;
+}
+
+
+#tribe-events-content-wrapper,
+.tribe_organizer-template-default .tribe-events-organizer,
+.tribe_venue-template-default .tribe-events-venue {
+    @include grid-column(16, $grid-sixteen);
+
+    @include media-up($tiny-screen) {
+        @include grid-shift(1, $grid-sixteen);
+        @include grid-column(14, $grid-sixteen);
+    }
+
+    @include media-up($small-screen) {
+        @include grid-shift(2, $grid-sixteen);
+        @include grid-column(12, $grid-sixteen);
+    }
+
+    max-width: auto;
+}
