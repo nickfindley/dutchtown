@@ -67,7 +67,7 @@ h2.tribe-events-page-title {
 }
 
 .tribe-events-list h2.tribe-events-page-title {
-    @include border-top(heavy)
+    @include border-top(heavy);
     font-size: 2.5rem;
     
     @include media-up($small-screen) {
