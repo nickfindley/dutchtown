@@ -23,6 +23,7 @@ $more = false;
 <div class="tribe-events-loop">
 
 	<?php while ( have_posts() ) : the_post(); ?>
+		
 		<?php do_action( 'tribe_events_inside_before_loop' ); ?>
 
 		<!-- Month / Year Headers -->
@@ -31,11 +32,15 @@ $more = false;
 		<!-- Event  -->
 		<?php
 		$post_parent = '';
+		
 		if ( $post->post_parent ) {
 			$post_parent = ' data-parent-post-id="' . absint( $post->post_parent ) . '"';
 		}
+		
 		?>
-		<div id="post-<?php the_ID() ?>" class="<?php tribe_events_event_classes() ?>" <?php echo $post_parent; ?>>
+		
+		<article id="post-<?php the_ID() ?>" class="<?php tribe_events_event_classes( 'tribe-event-list-event' ) ?>" <?php echo $post_parent; ?>>
+			
 			<?php
 			$event_type = tribe( 'tec.featured_events' )->is_featured( $post->ID ) ? 'featured' : 'event';
 
@@ -48,10 +53,11 @@ $more = false;
 
 			tribe_get_template_part( 'list/single', $event_type );
 			?>
-		</div>
-
+		
+		</article>
 
 		<?php do_action( 'tribe_events_inside_after_loop' ); ?>
+
 	<?php endwhile; ?>
 
 </div><!-- .tribe-events-loop -->

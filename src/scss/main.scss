@@ -38,7 +38,8 @@
     }
 }
 
-.article-title a {
+.article-title a,
+.venue-title a {
     text-decoration: none;
 }
 
@@ -139,11 +140,13 @@
 }
 
 .page-header-img,
-.article-header-img {
+.article-header-img,
+.venue-header-img {
     position: relative;
 
     .page-title,
-    .article-title {
+    .article-title,
+    .venue-title {
         background: transparent;
         bottom: auto;
         left: 0;
@@ -311,4 +314,13 @@
             color: $theme-yellow;
         }
     }
+}
+
+abbr {
+    border-bottom: 0;
+    text-decoration: none;
+}
+
+abbr[title] {
+    border-bottom: .0625rem dotted $text-color-light;
 }

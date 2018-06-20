@@ -371,13 +371,15 @@ $grid-sixteen: (
     }
 }
 
-.page-title {
+.page-title,
+.venue-title {
     @include grid-container;
 
     h1 {
         @include grid-column(16, $grid-sixteen);
     }
 }
+
 .archive-container,
 .search-container {
     @include grid-container;
@@ -401,13 +403,16 @@ $grid-sixteen: (
     }
 }
 
-.page-container {
+.page-container,
+.tribe_venue-template-default .tribe-events-pg-template {
     @include media-up($huge-screen) {
         @include grid-container;
     }
 
-    .article-has-img {
-        .article-title {
+    .article-has-img,
+    .venue-has-img {
+        .article-title,
+        .venue-title {
             @include grid-container;
 
             h1 {
@@ -424,10 +429,12 @@ $grid-sixteen: (
             }
         }
 
-        .article-content-container {
+        .article-content-container,
+        .venue-content-container {
             @include grid-container;
 
-            .article-content {
+            .article-content,
+            .venue-content {
                 @include grid-column(16, $grid-sixteen);
                 @include media-up($tiny-screen) {
                     @include grid-shift(1, $grid-sixteen);
@@ -442,11 +449,14 @@ $grid-sixteen: (
         }
     }
 
-    .article-has-no-img {
+    .article-has-no-img,
+    .venue-has-no-img {
         @include grid-container;
 
         .article-header,
-        .article-content {
+        .article-content,
+        .venue-header,
+        .venue-content {
             @include grid-column(16, $grid-sixteen);
 
             @include media-up($tiny-screen) {
@@ -461,10 +471,12 @@ $grid-sixteen: (
         }
     }
 
-    .article-footer-container {
+    .article-footer-container,
+    .venue-footer-container {
         @include grid-container;
 
-        .article-footer {
+        .article-footer,
+        .venue-footer {
             @include grid-column(16, $grid-sixteen);
 
             @include media-up($tiny-screen) {
@@ -475,54 +487,6 @@ $grid-sixteen: (
             @include media-up($small-screen) {
                 @include grid-shift(2, $grid-sixteen);
                 @include grid-column(12, $grid-sixteen);
-            }
-        }
-    }
-}
-
-.front-container {
-    @include grid-container;
-
-    .front-events {
-        .section-header {
-            @include grid-column(16, $grid-sixteen);
-        }
-
-        ul li {
-            @include grid-column(16, $grid-sixteen);
-
-            @include media-up($small-screen) {
-                @include grid-column(8, $grid-sixteen);
-            }
-
-            @include media-up($medium-screen) {
-                @include grid-column(4, $grid-sixteen);
-            }
-        }
-    }
-
-    .front-news {
-        .section-header {
-            @include grid-column(16, $grid-sixteen);
-        }
-
-        .article-has-img {
-            .article-content {
-                @include grid-column(10, $grid-sixteen);
-            }
-
-            .article-img {
-                @include grid-column(6, $grid-sixteen);
-            }
-        }
-
-        .article-has-no-img {
-            .article-header {
-                @include grid-column(6, $grid-sixteen);
-            }
-
-            .article-content {
-                @include grid-column(10, $grid-sixteen);
             }
         }
     }

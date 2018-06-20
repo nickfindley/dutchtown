@@ -6,14 +6,6 @@
  *
  * This view contains the filters required to create an effective single venue view.
  *
- * You can recreate an ENTIRELY new single venue view by doing a template override, and placing
- * a single-venue.php file in a tribe-events/pro/ directory within your theme directory, which
- * will override the /views/pro/single-venue.php.
- *
- * You can use any or all filters included in this file or create your own filters in
- * your functions.php. In order to modify or extend a single filter, please see our
- * readme on templates hooks and filters (TO-DO)
- *
  * @package TribeEventsCalendarPro
  *
  * @version 4.4.24
@@ -31,86 +23,133 @@ $venue_id     = get_the_ID();
 $full_address = tribe_get_full_address();
 $telephone    = tribe_get_phone();
 $website_link = tribe_get_venue_website_link();
-?>
-<?php while ( have_posts() ) : the_post(); ?>
-<div class="tribe-events-venue">
 
-		<p class="tribe-events-back">
-			<a href="<?php echo esc_url( tribe_get_events_link() ); ?>" rel="bookmark"><?php printf( __( '&larr; Back to %s', 'tribe-events-calendar-pro' ), tribe_get_event_label_plural() ); ?></a>
-		</p>
+while ( have_posts() ) : the_post(); ?>
 
-	<div class="tribe-events-venue-meta tribe-clearfix">
-		<!-- Venue Title -->
-		<?php do_action( 'tribe_events_single_venue_before_title' ) ?>
-		<h2 class="tribe-venue-name"><?php echo tribe_get_venue( $venue_id ); ?></h2>
-		<?php do_action( 'tribe_events_single_venue_after_title' ) ?>
+<div class="<?php if ( has_post_thumbnail() ) : ?>venue-has-img<?php else : ?>venue-has-no-img<?php endif; ?>">
+    
+    <header class="venue-header">
 
-		<?php if ( tribe_embed_google_map() && tribe_address_exists() ) : ?>
+    	<?php if ( has_post_thumbnail($venue_id) ) : ?>
+			
+		<div class="venue-header-img">   
+
+			<?php echo tribe_event_featured_image( $venue_id, 'full', false ); ?>
+
+			<div class="venue-title">
+				<h1 class="tribe-venue-name"><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo tribe_get_venue( $venue_id ); ?></a></h1>
+			</div><!-- .venue-title -->
+		
+		</div><!-- .venue-header-img -->
+		
+		<?php else: ?>
+		
+			<div class="venue-title">
+				<h1 class="tribe-venue-name"><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo tribe_get_venue( $venue_id ); ?></a></h1>
+			</div><!-- .venue-title -->
+		
+		<?php endif; ?>
+    
+    </header><!-- .venue-header -->
+
+	<div class="venue-content-container">
+
+		<section class="venue-content tribe-events-venue-meta">
+
+			<?php if ( tribe_embed_google_map() && tribe_address_exists() ) : ?>
+			
 			<!-- Venue Map -->
 			<div class="tribe-events-map-wrap">
 				<?php echo tribe_get_embedded_map( $venue_id, '100%', '200px' ); ?>
 			</div><!-- .tribe-events-map-wrap -->
-		<?php endif; ?>
-
-		<div class="tribe-events-event-meta">
-
-			<?php if ( tribe_show_google_map_link() && tribe_address_exists() ) : ?>
-				<!-- Google Map Link -->
-				<?php echo tribe_get_map_link_html(); ?>
+		
 			<?php endif; ?>
 
-			<!-- Venue Meta -->
-			<?php do_action( 'tribe_events_single_venue_before_the_meta' ) ?>
+			<div class="tribe-events-event-meta">
 
-			<div class="venue-address">
-
-				<?php if ( $full_address ) : ?>
-				<address class="tribe-events-address">
-					<span class="location">
-						<?php echo $full_address; ?>
-					</span>
-				</address>
+				<?php if ( tribe_show_google_map_link() && tribe_address_exists() ) : ?>
+				
+				<!-- Google Map Link -->
+				<?php echo tribe_get_map_link_html(); ?>
+			
 				<?php endif; ?>
 
-				<?php if ( $telephone ): ?>
-					<span class="tel">
-						<?php echo $telephone; ?>
-					</span>
-				<?php endif; ?>
+				<!-- Venue Meta -->
+				<?php do_action( 'tribe_events_single_venue_before_the_meta' ) ?>
 
-				<?php if ( $website_link ): ?>
-					<span class="url">
-						<?php echo $website_link; ?>
-					</span>
-				<?php endif; ?>
+				<div class="venue-address">
 
-			</div><!-- .venue-address -->
+					<?php if ( $full_address ) : ?>
+					<address class="tribe-events-address">
+						<span class="location">
+							<?php echo $full_address; ?>
+						</span>
+					</address>
+					<?php endif; ?>
 
-			<?php do_action( 'tribe_events_single_venue_after_the_meta' ) ?>
+					<?php if ( $telephone ): ?>
+						<span class="tel">
+							<?php echo $telephone; ?>
+						</span>
+					<?php endif; ?>
 
-		</div><!-- .tribe-events-event-meta -->
+					<?php if ( $website_link ): ?>
+						<span class="url">
+							<?php echo $website_link; ?>
+						</span>
+					<?php endif; ?>
 
-		<!-- Venue Description -->
-		<?php if ( get_the_content() ) : ?>
-		<div class="tribe-venue-description tribe-events-content">
-			<?php the_content(); ?>
-		</div>
-		<?php endif; ?>
+				</div><!-- .venue-address -->
 
-		<!-- Venue Featured Image -->
-		<?php echo tribe_event_featured_image( null, 'full' ) ?>
+				<?php do_action( 'tribe_events_single_venue_after_the_meta' ) ?>
 
-	</div><!-- .tribe-events-venue-meta -->
+			</div><!-- .tribe-events-event-meta -->
 
-	<!-- Upcoming event list -->
-	<?php do_action( 'tribe_events_single_venue_before_upcoming_events' ) ?>
+			<!-- Venue Description -->
+			<?php if ( get_the_content() ) : ?>
+			<div class="tribe-venue-description tribe-events-content">
+				<?php the_content(); ?>
+			</div>
+			<?php endif; ?>
 
-	<?php
-	// Use the `tribe_events_single_venue_posts_per_page` to filter the number of events to get here.
-	echo tribe_venue_upcoming_events( $venue_id, $wp_query->query_vars ); ?>
+		</section><!-- .venue-content .tribe-events-venue-meta -->
 
-	<?php do_action( 'tribe_events_single_venue_after_upcoming_events' ) ?>
+		<!-- Upcoming event list -->
+		<section class="venue-content">
+			<?php do_action( 'tribe_events_single_venue_before_upcoming_events' ) ?>
 
-</div><!-- .tribe-events-venue -->
-<?php
-endwhile;
+			<?php
+			// Use the `tribe_events_single_venue_posts_per_page` to filter the number of events to get here.
+			echo tribe_venue_upcoming_events( $venue_id, $wp_query->query_vars ); ?>
+
+			<?php do_action( 'tribe_events_single_venue_after_upcoming_events' ) ?>
+		</section>
+	
+	</div><!-- .venue-content-container -->
+	
+	<div class="venue-footer-container">
+		<footer class="venue-footer">
+			<p>
+			<?php
+				if ( function_exists('yoast_breadcrumb') ) {
+					echo '<i class="fas fa-fw fa-map-marker"></i> ';
+					yoast_breadcrumb();
+					echo '<br>';
+				}
+
+				if ( is_woocommerce() || is_cart() || is_checkout() ) :
+					echo '';
+				else :
+					dutchtown_updated_on( array(
+						'before_updated_on'	=> '<i class="fas fa-fw fa-bookmark"></i> This page was last updated on ',
+						'after_updated_on'	=> '.'
+						)
+					);
+				endif;
+			?>
+			</p>
+		</footer><!-- .venue-footer -->
+	</div><!-- .venue-footer-container -->
+
+</div><!--  -->
+<?php endwhile; ?>

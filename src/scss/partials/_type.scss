@@ -216,17 +216,6 @@ h2 {
     }
 }
 
-.carousel-title h2 {
-    span {
-        @include light;
-
-        i, em {
-            @include light-italic;
-        }
-    }
-}
-
-
 .site-content .archive-main .article-header-img {
     .oversized {
         h1,
@@ -247,7 +236,8 @@ h2 {
 
 .site-content .page-header-img,
 .site-content .article-header-img,
-.site-content .front-carousel-item {
+.site-content .front-carousel-item,
+.site-content .venue-header-img {
     h1,
     h2 {
         color: $heading-color;

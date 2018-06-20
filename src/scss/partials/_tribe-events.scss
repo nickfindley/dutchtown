@@ -275,18 +275,26 @@ h3.tribe-events-related-events-title {
     padding: 0;
 }
 
-.tribe-events-pg-template .tribe-events-venue .tribe-events-map-wrap {
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    float: none;
-    margin: 0 0 2rem;
-    padding: 0;
-    
-    @include media-up($small-screen) {
-        float: right;
-        margin: 0 0 2rem 2rem;
+.tribe-events-pg-template .tribe-events-venue {
+    padding-top: 2rem;
+
+    .tribe-events-map-wrap {
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        float: none;
+        margin: 0 0 2rem;
         padding: 0;
-        width: 50%;
-    }    
+        
+        @include media-up($small-screen) {
+            float: right;
+            margin: 0 0 2rem 2rem;
+            padding: 0;
+            width: 50%;
+        }   
+    }
+}
+
+.venue-has-no-img .venue-title {
+    @include border-top(heavy);
 }
