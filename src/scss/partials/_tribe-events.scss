@@ -27,7 +27,12 @@
 }
 
 .tribe-events-list-separator-month {
+    color: $heading-color;
+    @include border-top(regular);
+    display: block;
     font-size: 1.75rem;
+    letter-spacing: -.08rem;
+    line-height: 1;
 
     @include media-up($small-screen) {
         font-size: 2.5rem;
@@ -35,7 +40,7 @@
 
     @include bold;
     margin: 1rem 0;
-    padding: 0;
+    padding: .5rem 0 0;
     text-align: left;
     z-index: 0;
 
@@ -247,7 +252,6 @@ h3.tribe-events-related-events-title {
 }
 
 .tribe-events-day .tribe-events-event-image {
-    @include border-top(light);
     display: block;
     margin: 0;
     width: 100%
@@ -297,4 +301,8 @@ h3.tribe-events-related-events-title {
 
 .venue-has-no-img .venue-title {
     @include border-top(heavy);
+}
+
+.tribe-events-list-event-header {
+    @include border-top(light);
 }
