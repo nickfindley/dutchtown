@@ -237,6 +237,7 @@ h3.tribe-events-related-events-title {
 /* -------------------------------------
 /* ------------------------------------- june 24 2018 */
 
+.organizer-has-no-img .organizer-title,
 .venue-has-no-img .venue-title {
     @include border-top(heavy);
     margin-top: 2rem;
@@ -244,6 +245,11 @@ h3.tribe-events-related-events-title {
     h1 {
         margin: 0 0 2rem;
     }
+}
+
+.organizer-content-container,
+.venue-content-container {
+    margin-top: 2rem;
 }
 
 .events-page-title {
