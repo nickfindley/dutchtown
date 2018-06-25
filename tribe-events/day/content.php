@@ -7,6 +7,7 @@
  * Override this template in your own theme by creating a file at [your-theme]/tribe-events/day/content.php
  *
  * @package TribeEventsCalendar
+ * @version  4.3
  *
  */
 
@@ -14,23 +15,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 } ?>
 
-<div id="tribe-events-content" class="tribe-events-list tribe-events-day">
+<div id="tribe-events-content" class="events-list events-day">
 
-	<div class="tribe-events-list-container">
+	<div class="events-list-container">
 
-		<header class="tribe-events-list-header">
+		<header class="events-list-header">
 
 			<!-- List Title -->
-			<?php do_action( 'tribe_events_before_the_title' ); ?>
-			<h1 class="tribe-events-page-title"><?php echo tribe_get_events_title() ?></h1>
-			<?php do_action( 'tribe_events_after_the_title' ); ?>
+			<h2 class="events-page-title"><?php echo tribe_get_events_title() ?></h2>
 
 			<!-- Notices -->
 			<?php tribe_the_notices() ?>
 
 			<!-- List Header -->
-			<?php do_action( 'tribe_events_before_header' ); ?>
-			<div id="tribe-events-header" <?php tribe_events_the_header_attributes() ?>>
+			<div class="events-header" <?php tribe_events_the_header_attributes() ?>>
 
 				<!-- Header Navigation -->
 				<?php do_action( 'tribe_events_before_header_nav' ); ?>
@@ -39,29 +37,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			</div>
 			
-		</header><!-- .tribe-events-list-header -->
-
+		</header><!-- .events-list-header -->
 
 		<!-- Events Loop -->
 		<?php if ( have_posts() ) : ?>
+		<div class="events-loop">
 			<?php do_action( 'tribe_events_before_loop' ); ?>
 			<?php tribe_get_template_part( 'day/loop' ) ?>
 			<?php do_action( 'tribe_events_after_loop' ); ?>
+		</div><!-- .events-loop -->
 		<?php endif; ?>
 
 		<!-- List Footer -->
 		<?php do_action( 'tribe_events_before_footer' ); ?>
-		<div id="tribe-events-footer">
+		<div class="events-footer">
 
 			<!-- Footer Navigation -->
 			<?php do_action( 'tribe_events_before_footer_nav' ); ?>
 			<?php tribe_get_template_part( 'day/nav' ); ?>
 			<?php do_action( 'tribe_events_after_footer_nav' ); ?>
 
-		</div>
-		<!-- #tribe-events-footer -->
+		</div><!-- .events-footer -->
+		
 		<?php do_action( 'tribe_events_after_footer' ) ?>
 
-	</div><!-- .tribe-events-list-container -->
+	</div><!-- .events-list-container -->
 
-</div><!-- #tribe-events-content -->
+</div><!-- #tribe-events-content .events-list .events-day -->

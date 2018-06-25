@@ -371,8 +371,7 @@ $grid-sixteen: (
     }
 }
 
-.page-title,
-.venue-title {
+.page-title {
     @include grid-container;
 
     h1 {
@@ -403,60 +402,33 @@ $grid-sixteen: (
     }
 }
 
-.page-container,
-.tribe_venue-template-default .tribe-events-pg-template {
+.page-container {
     @include media-up($huge-screen) {
         @include grid-container;
     }
 
-    .article-has-img,
-    .venue-has-img {
-        .article-title,
-        .venue-title {
-            @include grid-container;
+    .article-content-container {
+        @include grid-container;
 
-            h1 {
-                @include grid-column(16, $grid-sixteen);
-                @include media-up($tiny-screen) {
-                    @include grid-shift(1, $grid-sixteen);
-                    @include grid-column(14, $grid-sixteen);
-                }
-
-                @include media-up($small-screen) {
-                    @include grid-shift(2, $grid-sixteen);
-                    @include grid-column(12, $grid-sixteen);
-                }
+        .article-content {
+            @include grid-column(16, $grid-sixteen);
+            @include media-up($tiny-screen) {
+                @include grid-shift(1, $grid-sixteen);
+                @include grid-column(14, $grid-sixteen);
             }
-        }
 
-        .article-content-container,
-        .venue-content-container {
-            @include grid-container;
-
-            .article-content,
-            .venue-content {
-                @include grid-column(16, $grid-sixteen);
-                @include media-up($tiny-screen) {
-                    @include grid-shift(1, $grid-sixteen);
-                    @include grid-column(14, $grid-sixteen);
-                }
-
-                @include media-up($small-screen) {
-                    @include grid-shift(2, $grid-sixteen);
-                    @include grid-column(12, $grid-sixteen);
-                }
+            @include media-up($small-screen) {
+                @include grid-shift(2, $grid-sixteen);
+                @include grid-column(12, $grid-sixteen);
             }
         }
     }
 
-    .article-has-no-img,
-    .venue-has-no-img {
+    .article-has-no-img {
         @include grid-container;
 
         .article-header,
-        .article-content,
-        .venue-header,
-        .venue-content {
+        .article-content {
             @include grid-column(16, $grid-sixteen);
 
             @include media-up($tiny-screen) {
@@ -471,12 +443,10 @@ $grid-sixteen: (
         }
     }
 
-    .article-footer-container,
-    .venue-footer-container {
+    .article-footer-container {
         @include grid-container;
 
-        .article-footer,
-        .venue-footer {
+        .article-footer {
             @include grid-column(16, $grid-sixteen);
 
             @include media-up($tiny-screen) {
@@ -492,32 +462,100 @@ $grid-sixteen: (
     }
 }
 
-.tribe-events-pg-template {
+// .tribe-events-pg-template {
+//     @include grid-container;
+// }
+
+
+// .tribe_organizer-template-default .tribe-events-organizer,
+// .tribe_venue-template-default .tribe-events-venue {
+//     @include grid-column(16, $grid-sixteen);
+
+//     @include media-up($tiny-screen) {
+//         @include grid-shift(1, $grid-sixteen);
+//         @include grid-column(14, $grid-sixteen);
+//     }
+
+//     @include media-up($small-screen) {
+//         @include grid-shift(2, $grid-sixteen);
+//         @include grid-column(12, $grid-sixteen);
+//     }
+
+//     max-width: auto;
+// }
+
+.events-day {
     @include grid-container;
+
+    .events-list-container {
+        @include grid-column(16, $grid-sixteen);
+
+        @include media-up($tiny-screen) {
+            @include grid-shift(1, $grid-sixteen);
+            @include grid-column(14, $grid-sixteen);
+        }
+
+        @include media-up($small-screen) {
+            @include grid-shift(2, $grid-sixteen);
+            @include grid-column(12, $grid-sixteen);
+        }
+    }
 }
 
+.organizer-has-img,
+.venue-has-img {
+    .organizer-title,
+    .venue-title {
+        @include grid-container;
 
-.tribe_organizer-template-default .tribe-events-organizer,
-.tribe_venue-template-default .tribe-events-venue {
-    @include grid-column(16, $grid-sixteen);
+        h1 {
+            @include grid-column(16, $grid-sixteen);
+            
+            @include media-up($tiny-screen) {
+                @include grid-shift(1, $grid-sixteen);
+                @include grid-column(14, $grid-sixteen);
+            }
 
-    @include media-up($tiny-screen) {
-        @include grid-shift(1, $grid-sixteen);
-        @include grid-column(14, $grid-sixteen);
+            @include media-up($small-screen) {
+                @include grid-shift(2, $grid-sixteen);
+                @include grid-column(12, $grid-sixteen);
+            }
+        }
     }
-
-    @include media-up($small-screen) {
-        @include grid-shift(2, $grid-sixteen);
-        @include grid-column(12, $grid-sixteen);
-    }
-
-    max-width: auto;
 }
 
- .tribe-events-day {
+.organizer-has-no-img,
+.venue-has-no-img {
     @include grid-container;
 
-    .tribe-events-list-container {
+    .organizer-title,
+    .venue-title {
+        @include grid-column(16, $grid-sixteen);
+            
+        @include media-up($tiny-screen) {
+            @include grid-shift(1, $grid-sixteen);
+            @include grid-column(14, $grid-sixteen);
+        }
+
+        @include media-up($small-screen) {
+            @include grid-shift(2, $grid-sixteen);
+            @include grid-column(12, $grid-sixteen);
+        }
+    }
+}
+
+.organizer-content-container,
+.venue-content-container,
+.organizer-footer-conteiner,
+.venue-footer-container {
+    @include grid-container;
+
+    .organizer-content,
+    .venue-content,
+    .organizer-events-list,
+    .venue-events-list,
+    .organizer-footer,
+    .venue-footer {
         @include grid-column(16, $grid-sixteen);
 
         @include media-up($tiny-screen) {

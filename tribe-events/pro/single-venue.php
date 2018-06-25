@@ -26,7 +26,7 @@ $website_link = tribe_get_venue_website_link();
 
 while ( have_posts() ) : the_post(); ?>
 
-<div class="<?php if ( has_post_thumbnail() ) : ?>venue-has-img<?php else : ?>venue-has-no-img<?php endif; ?>">
+<div class="venue-container <?php if ( has_post_thumbnail() ) : ?>venue-has-img<?php else : ?>venue-has-no-img<?php endif; ?>">
     
     <header class="venue-header">
 
@@ -34,10 +34,10 @@ while ( have_posts() ) : the_post(); ?>
 			
 		<div class="venue-header-img">   
 
-			<?php echo tribe_event_featured_image( $venue_id, 'full', false ); ?>
+			<?php dutchtown_post_thumbnail(); ?>
 
 			<div class="venue-title">
-				<h1 class="tribe-venue-name"><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo tribe_get_venue( $venue_id ); ?></a></h1>
+				<h1 class="venue-name"><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo tribe_get_venue( $venue_id ); ?></a></h1>
 			</div><!-- .venue-title -->
 		
 		</div><!-- .venue-header-img -->
@@ -45,7 +45,7 @@ while ( have_posts() ) : the_post(); ?>
 		<?php else: ?>
 		
 			<div class="venue-title">
-				<h1 class="tribe-venue-name"><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo tribe_get_venue( $venue_id ); ?></a></h1>
+				<h1 class="venue-name"><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo tribe_get_venue( $venue_id ); ?></a></h1>
 			</div><!-- .venue-title -->
 		
 		<?php endif; ?>
@@ -54,18 +54,18 @@ while ( have_posts() ) : the_post(); ?>
 
 	<div class="venue-content-container">
 
-		<section class="venue-content tribe-events-venue-meta">
+		<section class="venue-content">
 
 			<?php if ( tribe_embed_google_map() && tribe_address_exists() ) : ?>
 			
 			<!-- Venue Map -->
-			<div class="tribe-events-map-wrap">
+			<div class="venue-map-wrap">
 				<?php echo tribe_get_embedded_map( $venue_id, '100%', '200px' ); ?>
 			</div><!-- .tribe-events-map-wrap -->
 		
 			<?php endif; ?>
 
-			<div class="tribe-events-event-meta">
+			<div class="venue-meta">
 
 				<?php if ( tribe_show_google_map_link() && tribe_address_exists() ) : ?>
 				
@@ -88,47 +88,47 @@ while ( have_posts() ) : the_post(); ?>
 					<?php endif; ?>
 
 					<?php if ( $telephone ): ?>
-						<span class="tel">
-							<?php echo $telephone; ?>
-						</span>
+					<span class="tel">
+						<?php echo $telephone; ?>
+					</span>
 					<?php endif; ?>
 
 					<?php if ( $website_link ): ?>
-						<span class="url">
-							<?php echo $website_link; ?>
-						</span>
+					<span class="url">
+						<?php echo $website_link; ?>
+					</span>
 					<?php endif; ?>
 
 				</div><!-- .venue-address -->
 
 				<?php do_action( 'tribe_events_single_venue_after_the_meta' ) ?>
 
-			</div><!-- .tribe-events-event-meta -->
+			</div><!-- .venue-meta -->
 
 			<!-- Venue Description -->
 			<?php if ( get_the_content() ) : ?>
-			<div class="tribe-venue-description tribe-events-content">
+			<div class="venue-description">
+				
 				<?php the_content(); ?>
+			
 			</div>
 			<?php endif; ?>
 
-		</section><!-- .venue-content .tribe-events-venue-meta -->
+		</section><!-- .venue-content -->
 
 		<!-- Upcoming event list -->
-		<section class="venue-content">
-			<?php do_action( 'tribe_events_single_venue_before_upcoming_events' ) ?>
+		<section class="venue-events-list">
+			
+			<?php echo tribe_venue_upcoming_events( $venue_id, $wp_query->query_vars ); ?>
 
-			<?php
-			// Use the `tribe_events_single_venue_posts_per_page` to filter the number of events to get here.
-			echo tribe_venue_upcoming_events( $venue_id, $wp_query->query_vars ); ?>
-
-			<?php do_action( 'tribe_events_single_venue_after_upcoming_events' ) ?>
-		</section>
+		</section><!-- .venue-events-list -->
 	
 	</div><!-- .venue-content-container -->
 	
 	<div class="venue-footer-container">
+
 		<footer class="venue-footer">
+
 			<p>
 			<?php
 				if ( function_exists('yoast_breadcrumb') ) {
@@ -148,8 +148,11 @@ while ( have_posts() ) : the_post(); ?>
 				endif;
 			?>
 			</p>
+
 		</footer><!-- .venue-footer -->
+
 	</div><!-- .venue-footer-container -->
 
 </div><!--  -->
+
 <?php endwhile; ?>

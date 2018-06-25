@@ -15,56 +15,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 } ?>
 
-<div id="tribe-events-content" class="tribe-events-list">
+<div id="tribe-events-content" class="events-list">
 
+	<div class="events-list-container">
 
-	<?php
-	/**
-	 * Fires before any content is printed inside the list view.
-	 */
-	do_action( 'tribe_events_list_before_the_content' );
-	?>
+		<header class="events-list-header">
 
-	<!-- List Title -->
-	<?php do_action( 'tribe_events_before_the_title' ); ?>
-	<h2 class="tribe-events-page-title"><?php echo tribe_get_events_title() ?></h2>
-	<?php do_action( 'tribe_events_after_the_title' ); ?>
+			<!-- List Title -->
+			<h1 class="events-page-title"><?php echo tribe_get_events_title() ?></h1>
 
-	<!-- Notices -->
-	<?php tribe_the_notices() ?>
+			<!-- Notices -->
+			<?php tribe_the_notices() ?>
+			
+		</header><!-- .events-list-header -->
 
-	<!-- List Header -->
-	<?php do_action( 'tribe_events_before_header' ); ?>
-	<div id="tribe-events-header" <?php tribe_events_the_header_attributes() ?>>
+		<!-- Events Loop -->
+		<?php if ( have_posts() ) : ?>
+		<div class="events-loop">
+			<?php do_action( 'tribe_events_before_loop' ); ?>
+			<?php tribe_get_template_part( 'list/loop' ) ?>
+			<?php do_action( 'tribe_events_after_loop' ); ?>
+		</div><!-- .events-loop -->
+		<?php endif; ?>
 
-		<!-- Header Navigation -->
-		<?php do_action( 'tribe_events_before_header_nav' ); ?>
-		<?php tribe_get_template_part( 'list/nav', 'header' ); ?>
-		<?php do_action( 'tribe_events_after_header_nav' ); ?>
+		<!-- List Footer -->
+		<?php do_action( 'tribe_events_before_footer' ); ?>
+		<div class="events-footer">
 
-	</div>
-	<!-- #tribe-events-header -->
-	<?php do_action( 'tribe_events_after_header' ); ?>
+			<!-- Footer Navigation -->
+			<?php do_action( 'tribe_events_before_footer_nav' ); ?>
+			<?php tribe_get_template_part( 'list/nav', 'footer' ); ?>
+			<?php do_action( 'tribe_events_after_footer_nav' ); ?>
 
+		</div><!-- .events-footer -->
+		
+		<?php do_action( 'tribe_events_after_footer' ) ?>
+	
+	</div><!-- .events-list-container -->
 
-	<!-- Events Loop -->
-	<?php if ( have_posts() ) : ?>
-		<?php do_action( 'tribe_events_before_loop' ); ?>
-		<?php tribe_get_template_part( 'list/loop' ) ?>
-		<?php do_action( 'tribe_events_after_loop' ); ?>
-	<?php endif; ?>
-
-	<!-- List Footer -->
-	<?php do_action( 'tribe_events_before_footer' ); ?>
-	<div id="tribe-events-footer">
-
-		<!-- Footer Navigation -->
-		<?php do_action( 'tribe_events_before_footer_nav' ); ?>
-		<?php tribe_get_template_part( 'list/nav', 'footer' ); ?>
-		<?php do_action( 'tribe_events_after_footer_nav' ); ?>
-
-	</div>
-	<!-- #tribe-events-footer -->
-	<?php do_action( 'tribe_events_after_footer' ) ?>
-
-</div><!-- #tribe-events-content -->
+</div><!-- #tribe-events-content .events-list .events-day -->
