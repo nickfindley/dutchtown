@@ -50,22 +50,21 @@ endif;
 	<?php endif; ?>
 
 		<!-- Event Meta -->
-		<?php do_action( 'tribe_events_before_the_meta' ) ?>
-		
-		<div class="article-meta <?php echo esc_attr( $has_venue . $has_venue_address ); ?>">
+		<ul class="article-meta <?php echo esc_attr( $has_venue . $has_venue_address ); ?>">
 
 			<!-- Schedule & Recurrence Details -->
-			<div class="tribe-updated published time-details">
+			<li class="article-time-details">
 				
-				<?php echo tribe_events_event_schedule_details(); ?>
+				<i class="fa fas fa-fw fa-clock"></i> <?php echo tribe_events_event_schedule_details(); ?>
 			
-			</div>
+			</li>
 
 			<?php if ( $venue_details ) : ?>
 				
 			<!-- Venue Display Info -->
-			<div class="article-venue-details">
+			<li class="article-venue-details">
 			
+			<i class="fa fas fa-fw fa-map"></i> 
 			<?php
 				$address_delimiter = empty( $venue_address ) ? ' ' : ', ';
 
@@ -73,11 +72,11 @@ endif;
 				echo implode( $address_delimiter, $venue_details );
 			?>
 			
-			</div> <!-- .article-venue-details -->
+			</li> <!-- .article-venue-details -->
 
 			<?php endif; ?>
 
-		</div><!-- .article-meta -->
+		</ul><!-- .article-meta -->
 
 		<?php if ( tribe_get_cost() ) : ?>
 			

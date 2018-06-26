@@ -292,4 +292,31 @@ h3.tribe-events-related-events-title {
             padding-left: 1rem;
         }
     }
+
+    .article-meta {
+        @include media-up($medium-screen) {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        li {
+            display: block;
+        }
+    }
+
+    .article-time-details {
+        @include bold;
+    }
+
+    .article-venue-details {
+        margin-bottom: 2rem;
+    
+        .tribe-locality,
+        .tribe-delimiter,
+        .tribe-region,
+        .tribe-postal-code,
+        .tribe-country-name {
+            display: none;
+        }
+    }
 }
